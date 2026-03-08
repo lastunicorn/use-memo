@@ -18,10 +18,11 @@ Follow these conventions to match the current project style.
 
 ### React Components
 
-- Define components as named functions, then `export default` at the end.
+- Define components as named functions with `export default`.
 - Define props as local `type` aliases named `<ComponentName>Props`.
 - Destructure props directly in the function signature.
 - Use explicit event types, e.g. `ChangeEvent<HTMLInputElement>`.
+- Use named functions for event handlers, e.g. `handleNameChange`, not inline arrow functions in JSX.
 
 ### Types
 

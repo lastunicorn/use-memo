@@ -1,5 +1,14 @@
-import UseMemoDemo from './features/use-memo-demo/UseMemoDemo';
+import UseMemoDemo from "./features/use-memo-demo/UseMemoDemo";
+import "./App.css";
 
 export default function App() {
-	return <UseMemoDemo />;
+	return (
+		<>
+			<h1>
+				React <code>useMemo</code> Demo
+			</h1>
+
+			<UseMemoDemo />
+		</>
+	);
 }

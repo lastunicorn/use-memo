@@ -1,15 +1,15 @@
-import { type ChangeEvent, useMemo, useRef, useState } from 'react';
-import './UseMemoDemo.css';
+import { useMemo, useState, type ChangeEvent } from "react";
+import "./UseMemoDemo.css";
 
 export default function UseMemoDemo() {
 	const [num, setNum] = useState(0);
-	const [rerenderCount, setRerenderCount] = useState(0);
+	const [rerenderCount, setRerenderCount] = useState(0); // This state is used to trigger a component rerender without changing the num value.
 
-	const calculationCountRef = useRef(0);
+	console.log("Component is rendering...");
 
 	// Memoize the sum so that the expensive calculation is not triggered when unrelated rerenders occur.
 	const sum = useMemo(() => {
-		calculationCountRef.current += 1;
+		console.log("Calculating sum...");
 
 		let sum = 0;
 
@@ -33,46 +33,53 @@ export default function UseMemoDemo() {
 	}
 
 	return (
-		<div className='app-shell'>
+		<div className="card">
 			<header>
-				<h1>
-					React <code>useMemo</code> Demo
-				</h1>
-				<p className='subtitle'>
-					1) Change "Number" a couple of times to trigger the sum calculation: <code>sum(1, number)</code>.
-					<br/>
+				<p className="card__description">
+					(1)
+					<br />
+					Change "Number" a couple of times to trigger the sum calculation.
+					<br />
 					The sum is then memoized using <code>useMemo</code>.
 				</p>
-				<p className='subtitle'>
-					2) Then click 'Rerender' button to trigger a component rerender. Observe that the component is using the memoized values and the calculation process is not triggered unnecessary.
+				<p className="card__description">
+					(2)
+					<br />
+					Then click 'Rerender' button to trigger a component rerender.
+					<br />
+					Observe that the component is using the memoized values and the calculation process is not triggered
+					unnecessary.
+				</p>
+				<p className="card__description">
+					(note)
+					<br />
+					See the console for logs.
 				</p>
 			</header>
 
-			<section className='panel controls'>
+			<hr />
+
+			<section className="card__controls">
 				<label>
-					Number
+					Number:&nbsp;
 					<input
-					 type='number' value={num} onChange={handleNumChange} />
+						type="number"
+						value={num}
+						onChange={handleNumChange}
+					/>
 				</label>
-				<button onClick={handleRerenderClick}>Rerender</button>
 			</section>
 
-			<section className='panel'>
+			<section className="card__display">
 				<div>
-					<p className='metric-label'>Sum from 1 to {num}</p>
-					<p className='metric-value'>{sum}</p>
+					Sum (1 to {num}): {sum}
 				</div>
 			</section>
 
-			<section className='panel metrics'>
-				<div>
-					<p className='metric-label'>Sum calculation count</p>
-					<p className='metric-value'>{calculationCountRef.current}</p>
-				</div>
-				<div>
-					<p className='metric-label'>Unrelated rerender count</p>
-					<p className='metric-value'>{rerenderCount}</p>
-				</div>
+			<hr />
+
+			<section className="card__controls">
+				<button onClick={handleRerenderClick}>Re-render ({rerenderCount})</button>
 			</section>
 		</div>
 	);

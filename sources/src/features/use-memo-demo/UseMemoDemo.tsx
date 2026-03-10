@@ -39,7 +39,7 @@ export default function UseMemoDemo() {
 					React <code>useMemo</code> Demo
 				</h1>
 				<p className='subtitle'>
-					1) Change "Number" a couple of times to trigger the calculation process: <code>sum(1, number)</code>.
+					1) Change "Number" a couple of times to trigger the sum calculation: <code>sum(1, number)</code>.
 					<br/>
 					The sum is then memoized using <code>useMemo</code>.
 				</p>
@@ -66,7 +66,7 @@ export default function UseMemoDemo() {
 
 			<section className='panel metrics'>
 				<div>
-					<p className='metric-label'>Calculation run count</p>
+					<p className='metric-label'>Sum calculation count</p>
 					<p className='metric-value'>{calculationCountRef.current}</p>
 				</div>
 				<div>

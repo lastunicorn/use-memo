@@ -1,6 +1,6 @@
 import { type ChangeEvent, useMemo, useRef, useState } from 'react';
 import './UseMemoDemo.css';
-import { DataStorage } from '../../data/DataStorage';
+import { DataStorage } from '../../data-access/DataStorage';
 import { type Product } from './Product';
 import ProductCard from './ProductCard';
 

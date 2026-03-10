@@ -40,11 +40,11 @@ export default function UseMemoDemo() {
 	const [num, setNum] = useState(0);
 	const [rerenderCount, setRerenderCount] = useState(0);
 
-	const calculationCountRef = useRef(0);
+	console.log("Component is rendering...");
 
 	// Memoize the sum so that the expensive calculation is not triggered on unrelated rerenders.
 	const sum = useMemo(() => {
-		calculationCountRef.current += 1;
+		console.log("Calculating sum...");
 
 		let total = 0;
 
@@ -57,28 +57,40 @@ export default function UseMemoDemo() {
 	}, [num]);
 
 	function handleNumChange(event: ChangeEvent<HTMLInputElement>) {
+		// When num changes, the component is rerendered, the calculation of the sum is triggered.
 		setNum(Number(event.target.value));
 	}
 
 	function handleRerenderClick() {
+		// When the rerender button is clicked, the component is rerendered, but the calculation
+		// of the sum is not triggered because the num value was not changed.
 		setRerenderCount(x => x + 1);
 	}
 
 	return (
-		<div className='app-shell'>
-			<section className='panel controls'>
+		<div className='card'>
+
+			<section className="card__controls">
 				<label>
-					Number
-					<input type='number' value={num} onChange={handleNumChange} />
+					Number:&nbsp;
+					<input
+						type="number"
+						value={num}
+						onChange={handleNumChange}
+					/>
 				</label>
-				<button onClick={handleRerenderClick}>Rerender</button>
 			</section>
 
-			<section className='panel'>
+			<section className="card__display">
 				<div>
-					<p className='metric-label'>Sum from 1 to {num}</p>
-					<p className='metric-value'>{sum}</p>
+					Sum (1 to {num}): {sum}
 				</div>
+			</section>
+
+			<hr />
+
+			<section className="card__controls">
+				<button onClick={handleRerenderClick}>Re-render ({rerenderCount})</button>
 			</section>
 		</div>
 	);
@@ -88,7 +100,7 @@ export default function UseMemoDemo() {
 ### Make note of
 
 - `useMemo(() => { ... }, [num])` recalculates the sum (the expensive calculation) only when `num` changes.
-- Clicking `Rerender` triggers a rerender of the component, but does not recalculate the `sum`.
+- Clicking `Rerender` triggers a re-render of the component, but does not recalculate the `sum`.
 - `calculationCountRef` demonstrates how many times the memoized calculation actually runs.
 
 ## Step 3: Render the component from the app

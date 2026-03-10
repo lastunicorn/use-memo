@@ -10,7 +10,7 @@
 
 header {
 	padding: 1.4rem;
-	border-radius: 18px;
+	border-radius: 5px;
 	background: linear-gradient(145deg, #fffdf6, #f4efe1 65%, #f2e7c8);
 	border: 1px solid #d8cda8;
 	text-align: left;
@@ -41,12 +41,13 @@ h1 code {
 .subtitle {
 	margin: 0;
 	color: #5e5b53;
+	margin-top: 20px;
 }
 
 .panel {
 	background: #fff;
 	border: 1px solid #dbd2bb;
-	border-radius: 16px;
+	border-radius: 5px;
 	padding: 1rem;
 	box-shadow: 0 8px 18px rgba(66, 53, 23, 0.06);
 	animation: panel-enter 400ms ease;
@@ -100,7 +101,7 @@ input[type='range'] {
 button {
 	border: 0;
 	padding: 0.7rem 1rem;
-	border-radius: 10px;
+	border-radius: 5px;
 	background: linear-gradient(140deg, #2f6f52, #24563f);
 	color: #fff;
 	font-weight: 700;
